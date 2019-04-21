@@ -10,9 +10,8 @@ services:
     build: .
     env_file: MYSQL.env
     entrypoint:
-      - tail
-      - '-f'
-      - /dev/null
+      - "python"
+      - "/app/db_init.py"
     volumes:
       - .:/app:ro
 
