@@ -5,4 +5,6 @@ RUN pip install \
     mysql-connector-python \
     falcon gunicorn
 
+WORKDIR /app
+
 ENTRYPOINT ["python"]

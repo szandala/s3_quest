@@ -23,4 +23,4 @@ if not engine.dialect.has_table(engine, "users"):
     print("DB initialization completed")
 
 else:
-    print("Nothing to do, DB exists")
+    print("Nothing to do, table 'users' exists")
