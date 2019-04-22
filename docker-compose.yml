@@ -10,13 +10,22 @@ services:
     build: .
     env_file: MYSQL.env
     entrypoint:
-      - "python"
-      - "/app/db_init.py"
+      - /app/database_waiting.sh
+      - python
+      - /app/db_init.py
     volumes:
       - .:/app:ro
 
-
-
-
-
-
+  api_point:
+    build: .
+    env_file: MYSQL.env
+    ports:
+      - 8080:8080
+    entrypoint:
+      - /app/database_waiting.sh
+      - gunicorn
+      - -b
+      - 0.0.0.0:8080
+      - /app/api:api
+    volumes:
+      - .:/app:ro

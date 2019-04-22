@@ -10,3 +10,10 @@ class User(Base):
     name = Column(String(255))
     # this one should be normalized...
     address = Column(String(255))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'address': self.address
+        }
